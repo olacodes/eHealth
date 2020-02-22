@@ -1,0 +1,5 @@
+# Shebang to turn it into an executable file
+#!/bin/bash
+
+# Run Test
+docker-compose exec web python manage.py test
