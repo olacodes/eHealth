@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+</head>
+<body>
+    <h1>Hello</h1>
+    <!-- <h1>{{user.first_name}}</h1>
+    <h1>{{user.email}}</h1>
+    {% if user.userprofile.user_type %}
+        <h2>You are ordinary User</h2>
+    {% elif practitionerprofile.user_type %}
+        <h2>You are a Practitioner </h2>
+    {% else %}
+        <h2>You have registered before grouping</h2>
+    {% endif %}
+    <h1>{{ user.userprofile.user_type }}</h1>
+    <h1>{{ user.userprofile.age }}</h1>
+
+    -->
+
+    <!-- {% if form.errors %}
+    <p>There's something wrong with what you entered</p>
+    {% endif %}
+
+    {% if next %}
+    <p>Hey you can't access that page</p>
+    {% endif %} -->
+
+    <h1>This is Register page</h1>
+    <!-- {{ form.errors }} -->
+    <form method="POST" action="{% url 'register' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {{ profile_form.as_p }}
+
+        <!-- {{ form.errors }} -->
+        <!-- {{ profile_form.errors }} -->
+
+
+        <button type="submit">Register</button>
+    </form> 
+
+</body>
+</html>
