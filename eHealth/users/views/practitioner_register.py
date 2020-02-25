@@ -3,12 +3,9 @@ from django.contrib.auth import login, authenticate
 from django.contrib import messages
 import sys
 from ..forms.practitioner import PractitionerRegisterForm
-sys.path.append('..')
-from wecare.views.medical_api import get_users
 
 
 def practitioner_register(request):
-    print(get_users())
     if request.method == 'POST':
         form =  PractitionerRegisterForm(request.POST)
         if form.is_valid():
@@ -22,6 +19,5 @@ def practitioner_register(request):
             return redirect('dashboard')
 
     else:
-        get_users()
         form = PractitionerRegisterForm()
     return render(request, 'users/register.html', {'form': form})
