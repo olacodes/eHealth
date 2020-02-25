@@ -35,6 +35,7 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'wecare.apps.WecareConfig',
+    'users.apps.UsersConfig',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -61,7 +62,6 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            # os.path.join(BASE_DIR, 'templates'),
             os.path.join(BASE_DIR, 'wecare', 'templates', 'wecare'),
             os.path.join(BASE_DIR, 'users', 'templates' 'users'),
         ],
