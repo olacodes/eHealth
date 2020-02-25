@@ -17,14 +17,10 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
 from django.contrib.auth.views import LoginView, LogoutView
-from users.views import user_register, user_medical_info, practitioner_register
+from users.views import user_register
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', user_register.user_register, name='register'),
-    path('register/practitioner/', practitioner_register.practitioner_register, name='register-practitioner'),
-    path('medical-info/', user_medical_info.user_medical_info, name='medical-info'),
-    path('login/', LoginView.as_view(template_name='users/login.html'), name='login'),
-    path('logout/', LogoutView.as_view(template_name='users/logout.html'), name='logout'),
     path('', include('wecare.urls')),
 ]
