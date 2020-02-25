@@ -35,7 +35,6 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'wecare.apps.WecareConfig',
-    'users.apps.UsersConfig',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
