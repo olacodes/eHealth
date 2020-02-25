@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>This is the dashboard</h1>
+<h1>{{user.username}} is_staff? </h1>
+<h1>{{user.is_staff}}</h1>
+<a href="{% url 'logout' %}">Logout</a>
+
+{% endblock content %}
+
