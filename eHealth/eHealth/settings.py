@@ -34,13 +34,15 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'wecare.apps.WecareConfig',
+    'users.apps.UsersConfig',
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'wecare'
 ]
 
 MIDDLEWARE = [
@@ -60,9 +62,9 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'templates'),
-            os.path.join(BASE_DIR, 'templates', 'wecare'),
-            os.path.join(BASE_DIR, 'templates', 'registration'),
+            # os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'wecare', 'templates', 'wecare'),
+            os.path.join(BASE_DIR, 'users', 'templates' 'users'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -138,4 +140,10 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 LOGIN_REDIRECT_URL = 'dashboard'
+LOGIN_URL = 'login'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
