@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
-import sys
 from ..forms.practitioner import PractitionerRegisterForm
 
 
