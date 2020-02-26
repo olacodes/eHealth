@@ -67,8 +67,6 @@ class SelfMedication(APIView):
 
 class MostCommonIllness(APIView):
     def get(self, request):
-        total_form = MedicalInformation.objects.all().count()
-        empty_fields = MedicalInformation.objects.filter(common_illness='').count()
         malaria = MedicalInformation.objects.filter(common_illness='MAL').count()
         fever = MedicalInformation.objects.filter(common_illness='FEV').count()
         tuberculosis = MedicalInformation.objects.filter(common_illness='TUB').count()
@@ -76,11 +74,10 @@ class MostCommonIllness(APIView):
         cholera = MedicalInformation.objects.filter(common_illness='CHL').count()
 
         # Get the total of those that has filled the form
-        total = total_form - empty_fields 
+        total = malaria + fever + tuberculosis + cholera + others
 
         return Response({
             'total':total,
-            'empty_fields': empty_fields,
             'malaria': malaria,
             'fever': fever,
             'tuberculosis': tuberculosis,
