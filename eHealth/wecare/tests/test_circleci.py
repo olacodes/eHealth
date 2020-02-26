@@ -5,3 +5,4 @@ from django.test import TestCase
 class SetUpTesting(TestCase):
     def test_set_up(self):
         self.assertEqual(2 + 2, 4)
+        
