@@ -1,16 +1,15 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+# OPTIONS FOR CHOICES FIELDS
+GENDER                       = [('M', 'Male'), ('F', 'Female'),]
+MARITAL_STATUS               = [('SI', 'Single'), ('MA', 'Married'), ('DI', 'Divorce')]
+YES_OR_NO                    = [('Y', 'YES'), ('N', 'NO')]
+NO_SOMETIMES_ALWAYS          = [('NO', 'NO'), ('SMT', 'SOMETIMES'), ('AWS', 'ALWAYS')]
+COMMON_DISEASES              = [('MAL', 'MALARIA'), ('FEV', 'FEVER'), ('TUB', 'TUBERCULOSIS'), ('CHOL', 'CHOLERA'), ('OTHERS', 'OTHERS')]
 
 class MedicalInformation(models.Model):
-
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    # OPTIONS FOR CHOICES FIELDS
-    GENDER                       = [('M', 'Male'), ('F', 'Female'),]
-    MARITAL_STATUS               = [('SI', 'Single'), ('MA', 'Married'), ('DI', 'Divorce')]
-    YES_OR_NO                    = [('Y', 'YES'), ('N', 'NO')]
-    NO_SOMETIMES_ALWAYS          = [('NO', 'NO'), ('SMT', 'SOMETIMES'), ('AWS', 'ALWAYS')]
-    COMMON_DISEASES              = [('MAL', 'MALARIA'), ('FEV', 'FEVER'), ('TUB', 'TUBERCULOSIS'), ('CHOL', 'CHOLERA'), ('OTHERS', 'OTHERS')]
     
     # personal info
     gender                       = models.CharField(max_length=1, choices=GENDER)
