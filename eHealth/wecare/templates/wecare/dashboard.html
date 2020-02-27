@@ -1,9 +1,45 @@
 {% extends "base.html" %}
 {% block content %}
+    <div id="container" style="width: 75%;">
+        <canvas id="selfMedicationChart" data-url="http://localhost:8000/api/self-medication/"></canvas>
+        <div class="comments">This will be the comments for the chart</div>
+    </div>
 
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
+    <script>
+        var ctx = document.getElementById('selfMedicationChart').getContext("2d")
+        fetch('http://localhost:8000/api/self-medication/')
+        .then(data => data.json()).then(data => {
+           var labels = Object.keys(data).slice(1)
+           var data = Object.values(data).slice(1)
+
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: data,
+                        backgroundColor: ['red', 'green']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    legends: {
+                        position: 'top'
+                    }
+                }
+            })  
+        })
+
+    </script>
+
+<div id="container" style="width: 75%;">
+    <canvas id="selfMedicationChart" data-url="http://localhost:8000/api/self-medication/"></canvas>
+    <div class="comments">This will be the comments for the chart</div>
+</div>
 <h1>This is the dashboard</h1>
-<h1>{{user.username}} is_staff? </h1>
-<h1>{{user.is_staff}}</h1>
+<h1>{{user.username}} </h1>
+<h1> is_staff? {{user.is_staff}}</h1>
 <a href="{% url 'logout' %}">Logout</a>
 
 {% endblock content %}

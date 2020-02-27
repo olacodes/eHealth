@@ -71,7 +71,7 @@ class MostCommonIllness(APIView):
         fever = MedicalInformation.objects.filter(common_illness='FEV').count()
         tuberculosis = MedicalInformation.objects.filter(common_illness='TUB').count()
         others = MedicalInformation.objects.filter(common_illness='OTHERS').count()
-        cholera = MedicalInformation.objects.filter(common_illness='CHL').count()
+        cholera = MedicalInformation.objects.filter(common_illness='CHOL').count()
 
         # Get the total of those that has filled the form
         total = malaria + fever + tuberculosis + cholera + others

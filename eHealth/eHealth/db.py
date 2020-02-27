@@ -32,14 +32,14 @@ class DB:
         }
         
     # DOCKER
-    @classmethod
-    def development(cls):
-        return {
-            'default': {
-                'ENGINE': 'django.db.backends.postgresql',
-                'NAME': 'eHealthdb',
-                'HOST': 'db',
-                'USER': config('DBUSER'),
-                'PASSWORD': config('DBPASSWD'),
-            }
-        }
+    # @classmethod
+    # def development(cls):
+    #     return {
+    #         'default': {
+    #             'ENGINE': 'django.db.backends.postgresql',
+    #             'NAME': 'eHealthdb',
+    #             'HOST': 'db',
+    #             'USER': config('DBUSER'),
+    #             'PASSWORD': config('DBPASSWD'),
+    #         }
+    #     }

@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +9,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
     
     {% if title %}
         <title> WeCare - {{ title }} </title>
@@ -17,43 +19,101 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">WeCare</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <div class="navbar-nav mr-auto">
-                <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="#">About Us</a>
-              </div>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">eHealth</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav mr-auto">
+            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="#">About Us</a>
+          </div>
 
-              <!-- Navbar Right side -->
-              <div class="navbar-nav mr-3">
-                {% if user.is_staff %}
-                <a class="nav-item nav-link" href="{% url 'medical-info' %}">Check User Medical Info</a>
-                {% endif %}
-                {% if user.is_authenticated %}
-                <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
-                <a class="nav-item nav-link" href="{% url 'medical-info' %}">Add You medical Information</a>
-                {% else %}
-                <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
-                <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
-                {% endif %}
-              </div>
-            </div>
-          </nav>
+          <!-- Navbar Right side -->
+          <div class="navbar-nav mr-3">
+            {% if user.is_staff %}
+            <a class="nav-item nav-link" href="{% url 'medical-info' %}">Check User Medical Info</a>
+            {% endif %}
+            {% if user.is_authenticated %}
+            <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+            <a class="nav-item nav-link" href="{% url 'medical-info' %}">Add You medical Information</a>
+            {% else %}
+            <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+            <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+            {% endif %}
+          </div>
+        </div>
+      </nav>
     </header>
+
+    
+    {% block hero %}
+      
+    {% endblock %}
+      
+
     <div class="container">
         {% if messages %}
             {% for message in messages %}
-                <div class="alert alert-{{ message.tags }}">
+                <div class="alert alert-{{ message.tags }} fade show alert-dismissible " role="alert">
+
                     {{ message }}
+
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
             {% endfor %}
         {% endif %}
-        {% block content %}{% endblock %}
+
+
+        {% block content %}
+        <!-- All content of the page -->
+        {% endblock %}
     </div>
+
+    <footer>
+      <div class="container p-5">
+
+      <div class="footer-container d-flex justify-content-between">
+        <div class="about-us-footer col-md-4">
+          <h3 class="f-header">EHEALTH</h3>
+          <div class="line"></div>
+          <P>Welcome To Lifecrest Medical Services Ltd.  integrated and multi-specialist Medical Organisation.</P>
+        </div>
+
+        <div class="our-service col-md-4">
+          <div class="f-header">
+            <h3>Our Services</h3>
+            <div class="line"></div>
+            <li>Pediatitric Services</li>
+            <li>Pediatitric Services</li>
+            <li>Pediatitric Services</li>
+            <li>Pediatitric Services</li>
+          </div>
+        </div>
+
+        <div class="our-service col-md-4">
+          <div class="f-header">
+            <h3>We Are Social</h3>
+            <div class="line"></div>
+            <li>Pediatitric Services</li>
+            <li>Pediatitric Services</li>
+            <li>Pediatitric Services</li>
+            <li>Pediatitric Services</li>
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+
+    </footer>
+
+    <!-- Chartjs CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
