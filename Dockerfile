@@ -14,3 +14,4 @@ RUN rm requirements.txt
 RUN mkdir /app
 WORKDIR /app
 COPY eHealth .
+

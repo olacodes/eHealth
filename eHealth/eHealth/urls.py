@@ -19,10 +19,6 @@ from django.conf.urls import url
 from django.contrib.auth.views import LoginView, LogoutView
 from users.views import user_register, user_medical_info, practitioner_register
 
-from . import settings
-from django.contrib.staticfiles.urls import static
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', user_register.user_register, name='register'),
