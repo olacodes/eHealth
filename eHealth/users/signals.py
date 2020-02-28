@@ -13,3 +13,4 @@ def create_med_info(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_med_info(sender, instance, **kwargs):
     instance.medicalinformation.save()
+    

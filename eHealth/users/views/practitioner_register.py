@@ -19,4 +19,5 @@ def practitioner_register(request):
 
     else:
         form = PractitionerRegisterForm()
-    return render(request, 'users/register.html', {'form': form})
+    return render(request, 'practitioner/register.html', {'form': form})
+    
