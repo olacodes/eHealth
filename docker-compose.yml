@@ -5,10 +5,10 @@ services:
     image: postgres
     environment:
       - POSTGRES_DB=eHealthdb
-
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
     volumes:
       - "eHealthdb:/var/lib/postgresql/data"
-
     ports:
       - "5432:5432"
 
@@ -18,7 +18,7 @@ services:
     volumes:
       - "./eHealth:/app"
     env_file:
-      - ".env"
+      - .env
     ports:
       - "8100:8000"
     depends_on:
