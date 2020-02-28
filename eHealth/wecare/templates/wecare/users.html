@@ -1,0 +1,51 @@
+
+{% extends "base.html" %} {% block content %}
+
+<div class="users-table-container text-center">
+
+    <div class="users-header my-5">
+        <h1 class="">Users Medical Records</h1>
+        <div class="line"></div>
+    </div>
+
+    <div class="table-responsive ">
+
+        <table class="users-table bg-light table table-hover table-striped table-bordered shadow">
+            <thead class="thead-dark position-sticky fixed-top">
+                <tr>
+                    <th scope="col">User Id</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Occupation</th>
+                <th scope="col">Marital Status</th>
+                <th scope="col">Allergies</th>
+                <th scope="col">Most Recent Illness</th>
+                <th scope="col">Smoke or Drink</th>
+                <th scope="col">Last diagnose of</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for user in users %}
+                <tr>
+                    <th scope="row">{{user.id}}</th>
+                    <td>{{user.user}}</td>
+                    <td>{{user.age}}</td>
+                    <td>{{user.gender}}</td>
+                    <td>{{user.occupation}}</td>
+                    <td>{{user.marital_status}}</td>
+                    <td>{{user.allergies}}</td>
+                    <td>{{user.common_illness}}</td>
+                    <td>{{user.smoke_or_drink}}</td>
+                    <td>{{user.last_diagnose}}</td>
+                </tr>
+            {% endfor %}
+            
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+{% endblock content %}

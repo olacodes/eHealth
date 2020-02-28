@@ -11,19 +11,19 @@ from users.models.medical_information import MedicalInformation
 class HealthHabit(APIView):
     def get(self, request):
         # calculate the number of those that has adequate exercise, those that doesn't and sometimes
-        adequate_exercise = MedicalInformation.objects.filter(adequate_exercise='AWS').count()
-        no_adequate_exercise = MedicalInformation.objects.filter(adequate_exercise='NO').count()
-        smt_adequate_exercise = MedicalInformation.objects.filter(adequate_exercise='SMT').count()
+        adequate_exercise = MedicalInformation.objects.filter(adequate_exercise='Always').count()
+        no_adequate_exercise = MedicalInformation.objects.filter(adequate_exercise='No').count()
+        smt_adequate_exercise = MedicalInformation.objects.filter(adequate_exercise='Sometimes').count()
         
         # calculate the number of those that has adequate sleep, those that doesn't and sometimes
-        adequate_sleep = MedicalInformation.objects.filter(adequate_sleep='AWS').count()
-        no_adequate_sleep = MedicalInformation.objects.filter(adequate_sleep='NO').count()
-        smt_adequate_sleep = MedicalInformation.objects.filter(adequate_sleep='SMT').count()
+        adequate_sleep = MedicalInformation.objects.filter(adequate_sleep='Always').count()
+        no_adequate_sleep = MedicalInformation.objects.filter(adequate_sleep='No').count()
+        smt_adequate_sleep = MedicalInformation.objects.filter(adequate_sleep='Sometimes').count()
         
         # calculate the number of those that smoke or drink or both and those that doesn't
-        smoke_or_drink = MedicalInformation.objects.filter(smoke_or_drink='AWS').count()
-        no_smoke_or_drink = MedicalInformation.objects.filter(smoke_or_drink='NO').count()
-        smt_smoke_or_drink = MedicalInformation.objects.filter(smoke_or_drink='SMT').count()
+        smoke_or_drink = MedicalInformation.objects.filter(smoke_or_drink='Always').count()
+        no_smoke_or_drink = MedicalInformation.objects.filter(smoke_or_drink='No').count()
+        smt_smoke_or_drink = MedicalInformation.objects.filter(smoke_or_drink='Sometimes').count()
 
         return Response({
             'adequate_exercise': adequate_exercise,
@@ -43,15 +43,15 @@ class HealthHabit(APIView):
 class SelfMedication(APIView):
     def get(self, request):
         # calculate the total of those that practice self medication
-        last_self_medication = MedicalInformation.objects.filter(last_self_medication='Y').count()
-        frequent_self_medication = MedicalInformation.objects.filter(frequent_self_medication='Y').count()
-        doctor_precription = MedicalInformation.objects.filter(doctor_precription='Y').count()
+        last_self_medication = MedicalInformation.objects.filter(last_self_medication='Yes').count()
+        frequent_self_medication = MedicalInformation.objects.filter(frequent_self_medication='Yes').count()
+        doctor_precription = MedicalInformation.objects.filter(doctor_precription='Yes').count()
         total_practice_self_medication = last_self_medication + frequent_self_medication + doctor_precription  
         
         # calculate the total number of those that do not practice self medication         
-        no_last_self_medication = MedicalInformation.objects.filter(last_self_medication='N').count()
-        no_frequent_self_medication = MedicalInformation.objects.filter(frequent_self_medication='N').count()
-        no_doctor_precription = MedicalInformation.objects.filter(doctor_precription='N').count()
+        no_last_self_medication = MedicalInformation.objects.filter(last_self_medication='No').count()
+        no_frequent_self_medication = MedicalInformation.objects.filter(frequent_self_medication='No').count()
+        no_doctor_precription = MedicalInformation.objects.filter(doctor_precription='No').count()
         total_not_practice_self_medication = no_last_self_medication + no_frequent_self_medication + no_doctor_precription  
         
         # calculate total filled forms
@@ -67,11 +67,11 @@ class SelfMedication(APIView):
 
 class MostCommonIllness(APIView):
     def get(self, request):
-        malaria = MedicalInformation.objects.filter(common_illness='MAL').count()
-        fever = MedicalInformation.objects.filter(common_illness='FEV').count()
-        tuberculosis = MedicalInformation.objects.filter(common_illness='TUB').count()
-        others = MedicalInformation.objects.filter(common_illness='OTHERS').count()
-        cholera = MedicalInformation.objects.filter(common_illness='CHL').count()
+        malaria = MedicalInformation.objects.filter(common_illness='Malaria').count()
+        fever = MedicalInformation.objects.filter(common_illness='Fever').count()
+        tuberculosis = MedicalInformation.objects.filter(common_illness='Tuberculosis').count()
+        others = MedicalInformation.objects.filter(common_illness='Others').count()
+        cholera = MedicalInformation.objects.filter(common_illness='Cholera').count()
 
         # Get the total of those that has filled the form
         total = malaria + fever + tuberculosis + cholera + others

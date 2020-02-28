@@ -1,10 +1,62 @@
-{% extends "base.html" %}
+{% extends "base.html" %} 
 {% block content %}
 
-<h1>This is the dashboard</h1>
-<h1>{{user.username}} is_staff? </h1>
-<h1>{{user.is_staff}}</h1>
-<a href="{% url 'logout' %}">Logout</a>
+{% if user.is_staff %}
+
+<div class="go-users d-flex justify-content-end w-25">
+  <div class="card card-body align-self-end mt-5 w-25">
+    <a href="{% url 'users' %}">Go to Users Records</a>
+  </div>
+</div>  
+{% endif %}
+
+{% if not user.is_staff %}
+
+<div class="go-users">
+  <div class=" align-self-end mt-2">
+    <a class='btn btn-outline-info btn-sm' href="{% url 'medical-info' %}">Enter your medical information</a>
+  </div>
+</div>  
+
+{% endif %}
+
+
+<div class="dashboard-header text-center mx-5 pb-3">
+  <h1 class="display-4">Statistical Data</h1>
+  <div class="line mb-5"></div>
+</div>
+
+<!-- chart section -->
+<div class="chart-container text-center">
+
+  <div class="row justify-content-between chart-1-2 mb-3">
+
+    <div id="container" class="col-lg-6 mb-3">
+      <h4 class="chart-comment mb-4">Statistical analysis of Self-medication Rate</h4>
+      <canvas class="mb-5" id="selfMedicationChart"></canvas>
+    </div>
+
+    <div id="container" class="col-lg-6 mb-3">
+      <h4 class="chart-comment mb-4">Statistical Analysis Rate of Smoker and Drinkers</h4>
+      <canvas id="smokeOrDrinkChart" class="mb-5"></canvas>
+    </div>
+  </div>
+
+
+  <div class="row justify-content-between chart-3-4">
+    
+    <div id="container" class="col-lg-6 mb-3">
+      <h4 class="chart-comment mb-4">Statistical Analysis Rate of Physical Exercise</h4>
+      <canvas class="mb-5" id="exerciseRate"></canvas>
+    </div>
+    
+    <div class="col-lg-6 mb-3">
+      <h4 class="chart-comment mb-4">Statistical Analysis Rate of Common Illness/Disease</h4>
+
+      <canvas id="commonIllnessChart" class="mb-5"></canvas>
+    </div>
+  </div>
+  
+</div>
 
 {% endblock content %}
-

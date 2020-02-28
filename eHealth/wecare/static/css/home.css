@@ -1,0 +1,91 @@
+:root {
+  --deep-blue-color: #022444; /*  deep blue */
+  --orange-color: #F27D42; /* orange */
+  --light-cyan-color: rgb(171, 197, 197); /* cyan */
+  --light-blue-color: #558DCA; /* light cyan */
+  --light-grey-color: #C8EFF9; /* light grey */
+  --white--color: rgb(255, 255, 255); /* light grey */
+
+}
+body{
+    background-color: var(--light-cyan-color);
+    color: white;
+}
+@media screen and (min-width:1400px){
+    body{
+        width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* Navbar */
+.navbar {
+    min-height: 70px;
+    background-color: var(--deep-blue-color) !important;
+    color: var(--white--color) !important;
+  }
+  
+  .navbar-brand {
+    padding: 0 25px;
+    height: 70px;
+    line-height: 70px;
+    color: var(--white--color) !important;
+
+  }
+  
+  .navbar-toggle {
+    /* (80px - button height 34px) / 2 = 23px */
+    margin-top: 23px;
+    padding: 9px 10px !important;
+    
+  }
+  
+  @media (min-width: 768px) {
+    .navbar-nav > li > a {
+      /* (80px - line-height of 27px) / 2 = 26.5px */
+      padding-top: 26.5px;
+      padding-bottom: 26.5px;
+      line-height: 27px;
+    }
+  }
+
+.nav-item{
+  color: var(--white--color);
+}
+
+.carousel-img{
+    height: 600px !important;
+}
+.info-img{
+    height: 200px;
+    width: 200px;
+}
+.line{
+  width: 100%;
+  padding: 3px;
+  background-color: var(--orange-color);
+}
+
+.logout-container{
+  margin-bottom: 38vh;
+}
+
+footer{
+    background-color: var(--deep-blue-color);
+    color: white;
+    bottom: 0;
+}
+
+@media (min-width: 768px) {
+.form-container{
+  padding: 4rem;
+}
+}
+.go-users{
+  margin-left: 65% !important;
+}
+.chart-comment{
+  color: rgb(99, 9, 126);
+}
+

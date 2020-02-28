@@ -1,25 +1,36 @@
 {% extends "wecare/base.html" %}
 {% load crispy_forms_tags %}
-{% block content %}
 
-<div class="content-section">
-    <form method="POST">
-    {% csrf_token %}
-    <fieldset class="form-group">
-        <legend class="border-bottom mb-4">Log In</legend>
-        {{ form|crispy }}
-    </fieldset>
-    <div class="form-group">
-        <button class="btn btn-outline-info" type="submit">Log In</button>
+{% block content %}
+<div class="login-container my-5">
+    <h2 class="text-center text-white my-4"> Login Into Your Account</h2>
+    <div class="row text-secondary">
+        <div class="login-form-container card card-body shadow col-md-6">
+            <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Log In</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info btn-lg" type="submit">Log In</button>
+            </div>
+            </form>
+            <div class="border-top py-3">
+            <small class="text-muted"
+                >Need An Account?
+                <a class="ml-2" href="{% url 'register' %}">Register as user</a>
+                <a class="ml-2" href="{% url 'register-practitioner' %}">Register as practitioner</a>
+            </small>
+            </div>
+        </div>
+
+        <div class="login-img-container col-md-6">
+            <img class="img-fluid" src="https://res.cloudinary.com/olacode/image/upload/v1582804041/eHealth/ehealth10_cmx9f8.png" alt="login-img">
+        </div>
     </div>
-    </form>
-    <div class="border-top pt-3">
-    <small class="text-muted"
-        >Need An Account?
-        <a class="ml-2" href="{% url 'register' %}">Register as user</a>
-        <a class="ml-2" href="{% url 'register-practitioner' %}">Register as practitioner</a>
-    </small>
-    </div>
+    
 </div>
+
 
 {% endblock content %}

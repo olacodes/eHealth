@@ -14,3 +14,7 @@ RUN rm requirements.txt
 RUN mkdir /app
 WORKDIR /app
 COPY eHealth .
+
+ENV DEBUG True
+
+RUN python manage.py collectstatic --noinput --clear

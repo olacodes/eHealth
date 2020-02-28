@@ -1,10 +1,14 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.contrib.auth.decorators import user_passes_test
 
 from ..forms.user_medical_form import UserMedicalForm, UserMedicalFormUpdate
 
+def is_staff_check(user):
+    return not user.is_staff
 
+@user_passes_test(is_staff_check, redirect_field_name='dashboard')
 @login_required
 def user_medical_info(request):
     
