@@ -23,4 +23,4 @@ fetch('http://localhost:8100/api/common-illness/')
             }
         }
     })
-}
+})

@@ -1,21 +1,28 @@
-{% extends "wecare/base.html" %}
-{% load crispy_forms_tags %}
-{% block content %}
+{% extends "wecare/base.html" %} {% load crispy_forms_tags %} {% block content
+%}
 
-<div class="content-section">
-    {{ user.username }}
+<div class="med-info-container m-auto">
+  <div class="med-info-header text-center m-5">
+    <h1>Let's Have Your Medical Information</h1>
+    <div class="line"></div>
+  </div>
 
+  <div class="mb-5 form-container card card-body shadow text-dark">
     <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Medical Info</legend>
-            {{ u_form|crispy }}
-            {{ p_form|crispy }}
-        </fieldset>
-        <div class="form-group">
-            <button class="btn btn-outline-info" type="submit">Update</button>
-        </div>
+      {% csrf_token %}
+      <fieldset class="form-group">
+        <legend class="border-bottom mb-4">
+          Fill in Your Medical Information
+        </legend>
+        {{ u_form|crispy }} {{ p_form|crispy }}
+      </fieldset>
+      <div class="form-group">
+        <button class="btn btn-outline-info btn-lg" type="submit">
+          Update
+        </button>
+      </div>
     </form>
+  </div>
 </div>
 
 {% endblock content %}
