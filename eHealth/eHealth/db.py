@@ -7,7 +7,6 @@ class DB:
     def config(cls, debug):
         return cls.development() if debug else cls.production()
 
-    # production
     @classmethod
     def production(cls):
         return {
@@ -17,21 +16,6 @@ class DB:
             }
         }
 
-    # LOCAL ENV
-    @classmethod
-    def development(cls):
-        return {
-            'default': {
-                'ENGINE': 'django.db.backends.postgresql',
-                'NAME': 'postgres',
-                'HOST': '127.0.0.1',
-                'USER': 'postgres',
-                'PASSWORD': 'olatunde123',
-                
-            }
-        }
-        
-    # DOCKER
     @classmethod
     def development(cls):
         return {

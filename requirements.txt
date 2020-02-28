@@ -1,8 +1,11 @@
 asgiref==3.2.3
 bcrypt==3.1.7
+certifi==2019.11.28
 cffi==1.14.0
+cloudinary==1.20.0
 dj-database-url==0.5.0
 Django==3.0.3
+django-cors-headers==3.2.1
 django-crispy-forms==1.8.1
 djangorestframework==3.11.0
 psycopg2==2.8.4
@@ -11,4 +14,5 @@ python-decouple==3.3
 pytz==2019.3
 six==1.14.0
 sqlparse==0.3.0
+urllib3==1.25.8
 whitenoise==5.0.1
