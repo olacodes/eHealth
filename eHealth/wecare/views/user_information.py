@@ -28,7 +28,7 @@ class UsersInformation(TestIsStaff, View):
         users_data = users.data['users_medical_records']
         return render(request, self.template_name, {'users': users_data})
 
-        
+
 
 # class UserInformation(View):  
 #     template_name = 'user.html',
@@ -38,3 +38,5 @@ class UsersInformation(TestIsStaff, View):
 #         user = UserMedicalRecord.get(self, request, user_id)
 #         user_data = user.data['user_medical_record']
 #         return render(request, self.template_name, {'users': user_data})
+
+

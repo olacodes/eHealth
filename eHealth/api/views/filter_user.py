@@ -43,4 +43,3 @@ class FilterByFever(APIView):
         serializer = UserMedicalRecordSerializer(users, many=True)
         data = serializer.data
         return Response({'fever': data}, status=status.HTTP_200_OK)
-        

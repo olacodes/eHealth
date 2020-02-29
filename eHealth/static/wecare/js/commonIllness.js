@@ -1,3 +1,4 @@
+
 let cty = document.getElementById('commonIllnessChart').getContext("2d")
 
 fetch('http://localhost:8100/api/common-illness/')

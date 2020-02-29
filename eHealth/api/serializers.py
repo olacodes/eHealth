@@ -35,3 +35,5 @@ class UserMedicalRecordSerializer(serializers.Serializer):
     common_illness  = serializers.ChoiceField(choices=COMMON_DISEASES)
     smoke_or_drink  = serializers.ChoiceField(choices=NO_SOMETIMES_ALWAYS)
     
+
+    
