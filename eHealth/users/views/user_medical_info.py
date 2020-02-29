@@ -31,4 +31,3 @@ def user_medical_info(request):
     }
     
     return render(request, 'users/med_info.html', context)
-    
