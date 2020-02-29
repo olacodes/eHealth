@@ -1,6 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.core.exceptions import ObjectDoesNotExist
+
+
 # OPTIONS FOR CHOICES FIELDS
 GENDER                       = [('Male', 'Male'), ('Female', 'Female'),]
 MARITAL_STATUS               = [('Single', 'Single'), ('Married', 'Married'), ('DI', 'Divorce')]
@@ -39,3 +45,19 @@ class MedicalInformation(models.Model):
     def __str__(self):
         return f'{self.user.username} MedicalInfo'
 
+
+
+
+@receiver(post_save, sender=User)
+def create_med_info(sender, instance, created, **kwargs):
+    if created:
+        MedicalInformation.objects.create(user=instance).save()
+
+
+@receiver(post_save, sender=User)
+def save_med_info(sender, instance, **kwargs):
+    try:
+        instance.medicalinformation.save()
+    except ObjectDoesNotExist:
+        MedicalInformation.objects.create(user=instance)
+        
