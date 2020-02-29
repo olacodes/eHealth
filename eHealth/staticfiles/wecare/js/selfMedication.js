@@ -1,6 +1,6 @@
 
 const ctx = document.getElementById('selfMedicationChart').getContext("2d")
-fetch('http://localhost:8100/api/self-medication/')
+fetch('https://ehealths.herokuapp.com/api/self-medication/')
 .then(data => data.json()).then(data => {
     const labels = Object.keys(data).slice(1)
     const datas = Object.values(data).slice(1)
