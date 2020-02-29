@@ -2,22 +2,19 @@
 {% block content %}
 
 {% if user.is_staff %}
-
-<div class="go-users d-flex justify-content-end w-25">
-  <div class="align-self-end mt-5 w-25">
-    <a class='btn btn-outline-info btn-sm' href="{% url 'users' %}">Go to Users Records</a>
+<div class="go-users">
+  <div class="align-self-end mt-2">
+    <a class='btn btn-info btn-sm p-2' href="{% url 'users' %}">Go to Users Records</a>
   </div>
 </div>  
 {% endif %}
 
 {% if not user.is_staff %}
-
 <div class="go-users">
   <div class=" align-self-end mt-2">
-    <a class='btn btn-outline-info btn-sm' href="{% url 'medical-info' %}">Enter your medical information</a>
+    <a class='btn btn-info btn-sm p-2' href="{% url 'medical-info' %}">Enter your medical information</a>
   </div>
 </div>  
-
 {% endif %}
 
 <div class="dashboard-header text-center mx-5 pb-3">

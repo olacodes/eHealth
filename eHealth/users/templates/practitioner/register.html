@@ -3,13 +3,13 @@
 {% block content %}
 <div class="prac-reg-container">
     <div class="pract-reg-header text-center my-5">
-        <h1 class="display-4 text-uppercase">Join Us As Practitioner</h1>
-        <div class="line"></div>
+        <h1 class="display-5 text-uppercase">Join Us As Practitioner</h1>
+        <div class="line bg-info"></div>
     </div>
 
-    <div class="my-4 text-light" >
-        <div class="row">
-            <div class="form-container shadow col-md-7">
+    <div class="my-4 text-light bg-info" >
+        <div class="row p-4 m-0">
+            <div class="form-container shadow shadow-lg col-md-7">
                 <form method="POST">
                 {% csrf_token %}
                 <fieldset class="form-group">
@@ -17,42 +17,39 @@
                     {{ form|crispy }}
                 </fieldset>
                 <div class="form-group">
-                    <button class="btn btn-outline-info" type="submit">Register as Practitioner</button>
+                    <button class="btn btn-info" type="submit">Register as Practitioner</button>
                 </div>
                 </form>
                 <div class="border-top pt-3">
-                <small class="text-muted"
+                <p class="text- font-weight-bold"
                     >Already Have An Account?
-                    <a class="ml-2" href="{% url 'login' %}">Log In</a>
-                </small>
+                    <a class="ml-2 btn btn-success" href="{% url 'login' %}">Log In</a>
+                </p>
                 </div>
             </div>
 
 
-            <div class="col-md-5 text-dark">
-                <div class="card">
+            <div class="col-md-5 text-dark d-none d-sm-none d-md-block">
+                <div class="card bg-info text-light">
                     <img class="img-fluid" src="https://res.cloudinary.com/olacode/image/upload/v1582798198/eHealth/ehealth8_keghvs.jpg" alt="register-img">
                     <div class="card-body">
                     <h5 class="card-title">Register With Us Today</h5>
                     <p class="card-text">register with us today and have good health care with valueable information at your finger tip</p>
-                    
                     <p class="lead display-5 pb-4"
-                    >Already Have An Account?
-                    <a class="ml-2 btn btn-outline-primary" href="{% url 'login' %}">Log In</a>
+                    >Register As User
+                    <a class="ml-2 btn btn-success" href="{% url 'register' %}">Register</a>
                     </p>
                     </div>
                 </div>
 
-
-                <div class="card mt-5">
+                <div class="card mt-5 bg-info text-light">
                     <img class="img-fluid" src="https://res.cloudinary.com/olacode/image/upload/v1582791792/eHealth/ehealth1_fgu5zd.jpg" alt="register-img">
                     <div class="card-body">
                     <h5 class="card-title">Your data is save with us</h5>
                     <p class="card-text">We take this data analyse it and use it to make useful predictions about the general health of the people</p>
-                    
                     <p class="lead display-5 pb-4"
-                    >Register As Practitioner
-                    <a class="ml-2 btn btn-outline-primary" href="{% url 'login' %}">Register</a>
+                    >Already Have An Account?
+                    <a class="ml-2 btn btn-success" href="{% url 'login' %}">Log In</a>
                     </p>
                     </div>
                 </div>
