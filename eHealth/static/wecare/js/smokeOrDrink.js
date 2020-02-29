@@ -1,5 +1,5 @@
 var ctz = document.getElementById('smokeOrDrinkChart').getContext("2d")
-        fetch('http://localhost:8100/api/health-habit/')
+        fetch('https://ehealths.herokuapp.com/api/health-habit/')
         .then(data => data.json()).then(data => {
            var labels = Object.keys(data)
            var data = Object.values(data)
