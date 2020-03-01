@@ -15,7 +15,9 @@ from .views.filter_user import (
     FilterByCholera,
     FilterByFever,
     FilterByMalaria,
-    FilterByTB
+    FilterByTB,
+    FilterByMale,
+    FilterByFemale
 )
 
 
@@ -30,4 +32,7 @@ urlpatterns = [
     path('filter/fever', FilterByFever.as_view(), name='filter-by-fever'),
     path('filter/tb', FilterByTB.as_view(), name='filter-by-tb'),
     path('filter/cholera', FilterByCholera.as_view(), name='filter-by-cholera'),
+    path('filter/male', FilterByMale.as_view(), name='filter-by-male'),
+    path('filter/female', FilterByFemale.as_view(), name='filter-by-female'),
+
 ]
