@@ -9,10 +9,10 @@ from django.core.exceptions import ObjectDoesNotExist
 
 # OPTIONS FOR CHOICES FIELDS
 GENDER                       = [('Male', 'Male'), ('Female', 'Female'),]
-MARITAL_STATUS               = [('Single', 'Single'), ('Married', 'Married'), ('DI', 'Divorce')]
-YES_OR_NO                    = [('Yes', 'YES'), ('No', 'NO')]
-NO_SOMETIMES_ALWAYS          = [('No', 'NO'), ('Sometimes', 'SOMETIMES'), ('Always', 'ALWAYS')]
-COMMON_DISEASES              = [('Malaria', 'MALARIA'), ('Fever', 'FEVER'), ('Tuberculosis', 'TUBERCULOSIS'), ('Cholera', 'CHOLERA'), ('Others', 'OTHERS')]
+MARITAL_STATUS               = [('Single', 'Single'), ('Married', 'Married'), ('Divorce', 'Divorce')]
+YES_OR_NO                    = [('Yes', 'Yes'), ('No', 'No')]
+NO_SOMETIMES_ALWAYS          = [('No', 'No'), ('Sometimes', 'Sometimes'), ('Always', 'Always')]
+COMMON_DISEASES              = [('Malaria', 'Malaria'), ('Fever', 'Fever'), ('Tuberculosis', 'Tuberculosis'), ('Cholera', 'Cholera'), ('Others', 'Others')]
 
 class MedicalInformation(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

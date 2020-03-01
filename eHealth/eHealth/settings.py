@@ -34,7 +34,6 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -46,7 +45,9 @@ INSTALLED_APPS = [
     'cloudinary',
     'api',
     'users',
-    'wecare'
+    'wecare',
+    'crispy_forms',
+    'django_filters',
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True

@@ -35,7 +35,7 @@ class FilterByCholera(APIView):
         users = MedicalInformation.objects.select_related('user').filter(common_illness="Cholera")
         serializer = UserMedicalRecordSerializer(users, many=True)
         data = serializer.data
-        return Response({'choler': data}, status=status.HTTP_200_OK)
+        return Response({'cholera': data}, status=status.HTTP_200_OK)
 
 class FilterByFever(APIView):
     def get(self, response):
@@ -43,3 +43,19 @@ class FilterByFever(APIView):
         serializer = UserMedicalRecordSerializer(users, many=True)
         data = serializer.data
         return Response({'fever': data}, status=status.HTTP_200_OK)
+
+
+class FilterByMale(APIView):
+    def get(self, response):
+        users = MedicalInformation.objects.select_related('user').filter(gender="Male")
+        serializer = UserMedicalRecordSerializer(users, many=True)
+        data = serializer.data
+        return Response({'male': data}, status=status.HTTP_200_OK)
+
+
+class FilterByFemale(APIView):
+    def get(self, response):
+        users = MedicalInformation.objects.select_related('user').filter(gender="Female")
+        serializer = UserMedicalRecordSerializer(users, many=True)
+        data = serializer.data
+        return Response({'female': data}, status=status.HTTP_200_OK)
