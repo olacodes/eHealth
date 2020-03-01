@@ -3,9 +3,7 @@
 
 [![CircleCI](https://circleci.com/gh/decagonhq/bouncer-restapi/tree/master.svg?style=svg&circle-token=f84852fd9b9ee23b40fdfcf2d2e38dc5f65cb1e2)](https://circleci.com/gh/decagonhq/bouncer-restapi/tree/master)
 
-eHealth is a digital health application system that help the hospitals to collect the medical data of their users, visualise and analyse the data to make critical suggestions and provide solutions to the problem. 
-
-[eHealth Application](https://ehealths.herokuapp.com/)
+eHealth is a digital health application system that help the hospitals to collect the medical data of their users (patients), visualise and analyse the data to make critical suggestions and assumptions that lead to solution. [eHealth Application](https://ehealths.herokuapp.com/)
 
 ## Technolgies
 
