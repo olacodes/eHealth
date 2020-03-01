@@ -1,0 +1,25 @@
+#!/bin/bash
+
+bin/stop
+
+# Delete existing artifacts
+if [ -d "venv" ]; then rm -rf venv; fi
+if [ -f ".env" ]; then rm .env; fi
+
+# create virtual environment folder
+virtualenv venv
+
+# install requirements into the new environment
+if [ -f "requirements.txt" ]; then
+    source bin/env
+    pip install -r requirements.txt
+fi
+
+# create .env file from .env.example file
+cp .env.example .env
+
+echo -e "\n\n[*] Setup completed successfully"
+echo -e "[*] Ensure to update your environment config file (.env)"
+
+echo -e "\n[*] Now run the command below to start the application"
+echo -e "\n\t$ bin/start -d && bin/open\n\n"

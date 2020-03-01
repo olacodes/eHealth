@@ -89,3 +89,6 @@ footer{
   color: rgb(99, 9, 126);
 }
 
+#hint_id_password1, #hint_id_password2, #hint_id_username{
+  color: black !important;
+}
