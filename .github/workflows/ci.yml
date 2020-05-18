@@ -15,21 +15,13 @@ jobs:
         name: test
         runs-on: ubuntu-latest
         steps:
-
-            # step 1: set up python 
-            - name: Set up python latest version
-              uses: actions/setup-python@v2
         
-            # step 2: Checkout repository code
+            # step 1: Checkout repository code
             - name: Checkout code into workspace directory
               uses: actions/checkout@v2
 
-            # step 3: Install dependencies
-            - name: Install all dependencies
-              run: pip install -r requirements.txt
-            
-            # step 4: Run test
-            - name: Run all tests
+            # step 2: Run the app in the container
+            - name: Spin up Docker engine
               env:
                 SECRET_KEY: ${{ secrets.SECRET_KEY }}
                 DEBUG: ${{ secrets.DEBUG }}
@@ -38,6 +30,8 @@ jobs:
                 CLOUD_NAME: ${{ secrets.CLOUD_NAME }}
                 DBPASSWD: ${{ secrets.DBPASSWD }}
                 DBUSER: ${{ secrets.DBUSER }}
-              run: |
-                cd eHealth
-                python manage.py test
+              run: docker-compose up -d       
+            
+            # step 4: Run test
+            - name: Run all tests
+              run: docker run --network container:python:latest python manage.py test
