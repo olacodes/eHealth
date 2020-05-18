@@ -8,6 +8,18 @@ on:
     pull_request:
         branches:
             - develop
+env:
+    IMAGE_NAME: python:3.7
+
+env:
+    IMAGE_NAME: postgres:12
+    SECRET_KEY: ${{ secrets.SECRET_KEY }}
+    DEBUG: ${{ secrets.DEBUG }}
+    API_KEY: ${{ secrets.API_KEY }}
+    API_SECRET: ${{ secrets.API_SECRET }}
+    CLOUD_NAME: ${{ secrets.CLOUD_NAME }}
+    DBPASSWD: ${{ secrets.DBPASSWD }}
+    DBUSER: ${{ secrets.DBUSER }}
 
 # jobs to run
 jobs:
@@ -19,19 +31,27 @@ jobs:
             # step 1: Checkout repository code
             - name: Checkout code into workspace directory
               uses: actions/checkout@v2
-
+              
+            - name: Run tests
+              run: |
+                if [ -f docker-compose.test.yml ]; then
+                  docker-compose --file docker-compose.test.yml build
+                  docker-compose --file docker-compose.test.yml run sut
+                else
+                  docker build . --file Dockerfile
+                fi
             # step 2: Run the app in the container
-            - name: Spin up Docker engine
-              env:
-                SECRET_KEY: ${{ secrets.SECRET_KEY }}
-                DEBUG: ${{ secrets.DEBUG }}
-                API_KEY: ${{ secrets.API_KEY }}
-                API_SECRET: ${{ secrets.API_SECRET }}
-                CLOUD_NAME: ${{ secrets.CLOUD_NAME }}
-                DBPASSWD: ${{ secrets.DBPASSWD }}
-                DBUSER: ${{ secrets.DBUSER }}
-              run: docker-compose up -d       
+            # - name: Spin up Docker engine
+            #   env:
+            #     SECRET_KEY: ${{ secrets.SECRET_KEY }}
+            #     DEBUG: ${{ secrets.DEBUG }}
+            #     API_KEY: ${{ secrets.API_KEY }}
+            #     API_SECRET: ${{ secrets.API_SECRET }}
+            #     CLOUD_NAME: ${{ secrets.CLOUD_NAME }}
+            #     DBPASSWD: ${{ secrets.DBPASSWD }}
+            #     DBUSER: ${{ secrets.DBUSER }}
+            #   run: docker-compose up -d       
             
-            # step 4: Run test
-            - name: Run all tests
-              run: docker run --network container:python:latest python manage.py test
+            # # step 4: Run test
+            # - name: Run all tests
+            #   run: docker run --network container:python:latest python manage.py test
