@@ -15,11 +15,11 @@ services:
   web:
     container_name: eHealth-backend
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    command: python manage.py runserver 0.0.0.0:8000 && python manage.py test
     volumes:
       - "./eHealth:/app"
-    env_file:
-      - .env
+    # env_file:
+    #   - .env
     ports:
       - "8100:8000"
     depends_on:

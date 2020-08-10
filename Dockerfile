@@ -1,4 +1,4 @@
-FROM python:3.7
+FROM python:3
 
 # Set environment variables
 ENV PYTHONUNBUFFERED 1
@@ -14,3 +14,5 @@ RUN rm requirements.txt
 RUN mkdir /app
 WORKDIR /app
 COPY eHealth .
+
+CMD tail -f /dev/null
