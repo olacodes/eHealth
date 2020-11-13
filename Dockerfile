@@ -10,6 +10,9 @@ RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 RUN rm requirements.txt
 
+COPY Dockerfile ./.env* ./
+
+
 # copy application codebase
 RUN mkdir /app
 WORKDIR /app

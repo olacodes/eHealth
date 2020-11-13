@@ -239,3 +239,8 @@ cloudinary.config(
     api_secret = config('API_SECRET')
     
 )
+
+# paystack Api testing
+
+PAYSTACK_PUBLIC_KEY = config('PAYSTACK_PUBLIC_KEY')
+

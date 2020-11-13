@@ -20,9 +20,12 @@ from .views.filter_user import (
     FilterByFemale
 )
 
+from .views.paystack import Paystack
+
 
 urlpatterns = [
     path('users/', Users.as_view(), name='users-api'),
+    path('paystack/', Paystack.as_view(), name='paystack'),
     path('users/medical-records', UsersMedicalRecords.as_view(), name='medical-records'),
     path('users/medical-records/<int:user_id>', UserMedicalRecord.as_view(), name='medical-records'),
     path('common-illness/', MostCommonIllness.as_view(), name='common-illness'),
