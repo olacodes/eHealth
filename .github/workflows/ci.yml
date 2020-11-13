@@ -1,39 +1,30 @@
 name: CI with Github
 
+cancel # delete this line
+
 # On events
-on:
-    push:
-        branches:
-            - develop
-    pull_request:
-        branches:
-            - develop
+on: [push, pull_request]
 
 # jobs to run
 jobs:
-    test:
-        name: test
-        runs-on: ubuntu-latest
-        steps:
-            # step 1: Checkout repository code
-            - name: Checkout code into workspace directory
-              uses: actions/checkout@v2
-              
-            # step 2: Run the app in the container
-            - name: Spin up Docker engine
-              env:
-                SECRET_KEY: ${{ secrets.SECRET_KEY }}
-                DEBUG: ${{ secrets.DEBUG }}
-                API_KEY: ${{ secrets.API_KEY }}
-                API_SECRET: ${{ secrets.API_SECRET }}
-                CLOUD_NAME: ${{ secrets.CLOUD_NAME }}
-                DBPASSWD: ${{ secrets.DBPASSWD }}
-                DBUSER: ${{ secrets.DBUSER }}
-              run: docker-compose -f docker-compose.ci.yml up -d      
-            
-            # - name: check running container
-            #   run: docker ps -a
-
-            # step 4: Run test
-            # - name: Run all tests
-            #   run: docker exec eHealth-backend python manage.py test
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code into workspace directory
+        uses: actions/checkout@v2
+      - name: Spin up Docker engine
+        run: docker-compose -f docker-compose.ci.yml up -d   
+        env:
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          DEBUG: ${{ secrets.DEBUG }}
+          API_KEY: ${{ secrets.API_KEY }}
+          API_SECRET: ${{ secrets.API_SECRET }}
+          CLOUD_NAME: ${{ secrets.CLOUD_NAME }}
+          DBPASSWD: ${{ secrets.DBPASSWD }}
+          DBUSER: ${{ secrets.DBUSER }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          PAYSTACK_PUBLIC_KEY: ${{ secrets.PAYSTACK_PUBLIC_KEY }}
+      - name: check running container
+        run: docker ps -a
+      - name: Run all tests
+        run: docker-compose exec ehealth_web python manage.py test
